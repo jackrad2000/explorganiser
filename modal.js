@@ -12,8 +12,7 @@ $(document).on('click', '#infobutton', function() {
         success: function(data){
             data = jQuery.parseJSON( data );
             data = data.result;
-            $('.modal-header').html('<button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h3 class="modal-title">' + data.name + '</h3>');
-            var text = '';
+            var text = '<button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
             text = text + '<h4 class="text-center">Image</h4>';
             text = text + '<hr><h4 class="text-center">Description</h4>';
             if (data.opening_hours == undefined) {
@@ -29,11 +28,28 @@ $(document).on('click', '#infobutton', function() {
                 type: 'GET',
                 url:'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + data.geometry.location.lat + '&lon=' + data.geometry.location.lon + '&cnt=10',
                 dataType: "text",
+                async: false,
                 success: function(weatherdata){
+                    var days =
+                    [
+                        'Today',
+                        'Tomorrow',
+                        moment(Date()).day(8).format("DD/MM/YYYY"),
+                        moment(Date()).day(9).format("DD/MM/YYYY"),
+                        moment(Date()).day(10).format("DD/MM/YYYY"),
+                        moment(Date()).day(11).format("DD/MM/YYYY"),
+                        moment(Date()).day(12).format("DD/MM/YYYY"),
+                        moment(Date()).day(13).format("DD/MM/YYYY"),
+                        moment(Date()).day(14).format("DD/MM/YYYY"),
+                        moment(Date()).day(15).format("DD/MM/YYYY")
+                    ];
                     weatherdata = jQuery.parseJSON(weatherdata);
                     $.each(weatherdata.list, function(index,value) {
                         console.log(value);
-                        text = text + Date(value.dt).toString();
+                        mintemp = parseInt(value.temp.min - 273.15);
+                        maxtemp = parseInt(value.temp.max - 273.15);
+                        weather = value.weather[0].description;
+                        text = text + '<h5 class="text-center">' + days[index] + ': ' + weather.charAt(0).toUpperCase() + weather.slice(1) + ' Min: ' + mintemp + "&deg;C Max: " + maxtemp + '&deg;C</h5>';
                     })
                 }
             });
