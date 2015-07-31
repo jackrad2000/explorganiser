@@ -19,7 +19,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
         <script src="apiservice.js"></script>
     </head>
     <body>
@@ -34,6 +33,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">Explorganiser</a>
+                    <p class="navbar-text">Logged in as Jack</p> 
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,8 +41,7 @@
 
 
                         <!-- Trigger the modal with a button -->
-  						<li><a><div data-toggle="modal" data-target="#myModal">Log In</div></a></li>
-                        <li><a><div data-toggle="modal" data-target="#signUp">Sign Up</div></a></li>
+  						<li><a href="index.html"><div >Log out</div></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -108,7 +107,7 @@
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
+    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -140,7 +139,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <a href="loggedin.html" class="btn btn-default">Log In</a>
+      <button type="submit" class="btn btn-default"><a href="loggedin.html">Log In</a></button>
     </div>
   </div>
 </form>
@@ -149,10 +148,10 @@
    
         </div>
       </div>
-
+      
     </div>
   </div>
-
+  
 </div>
 
         <script src="modal.js"></script>
