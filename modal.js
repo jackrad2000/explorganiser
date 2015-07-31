@@ -3,7 +3,7 @@ $('#map-canvas').css('margin-top', $('.navbar').height() + 'px');
 
 $(document).on('click', '#infobutton', function() {
 
-    $('.modal-body').html('<h3 class="text-center">Loading. Please wait.</h3>');
+    $('#mapdata .modal-body').html('<h3 class="text-center">Loading. Please wait.</h3>');
 
     $.ajax({
         type: 'GET',
@@ -34,14 +34,14 @@ $(document).on('click', '#infobutton', function() {
                     [
                         'Today',
                         'Tomorrow',
+                        moment(Date()).day(7).format("DD/MM/YYYY"),
                         moment(Date()).day(8).format("DD/MM/YYYY"),
                         moment(Date()).day(9).format("DD/MM/YYYY"),
                         moment(Date()).day(10).format("DD/MM/YYYY"),
                         moment(Date()).day(11).format("DD/MM/YYYY"),
                         moment(Date()).day(12).format("DD/MM/YYYY"),
                         moment(Date()).day(13).format("DD/MM/YYYY"),
-                        moment(Date()).day(14).format("DD/MM/YYYY"),
-                        moment(Date()).day(15).format("DD/MM/YYYY")
+                        moment(Date()).day(14).format("DD/MM/YYYY")
                     ];
                     weatherdata = jQuery.parseJSON(weatherdata);
                     $.each(weatherdata.list, function(index,value) {
@@ -90,7 +90,7 @@ $(document).on('click', '#infobutton', function() {
             } else {
                 text = text + '<h5 class="text-center">There are no reviews for this location.</h5>'
             }
-            $('.modal-body').html(text);
+            $('#mapdata .modal-body').html(text);
             console.log(data);
         }, error: function(jqXHR, textStatus, errorThrown) {
             $('.modal-body').html('<h3 class="text-center">Unable to retrieve data. Please try again later</h3>');

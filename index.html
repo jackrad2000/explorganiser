@@ -19,7 +19,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+        <script src="moment.min.js"></script>
         <script src="apiservice.js"></script>
     </head>
     <body>
@@ -41,7 +41,7 @@
 
 
                         <!-- Trigger the modal with a button -->
-  						<li><a><div data-toggle="modal" data-target="#myModal">Log In</div></a></li>
+  						<li><a><div data-toggle="modal" data-target="#login">Log In</div></a></li>
                         <li><a><div data-toggle="modal" data-target="#signUp">Sign Up</div></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -60,7 +60,7 @@
 <!-- Modal -->
   <div class="modal fade" id="signUp" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content SIGN UP-->
       <div class="modal-content">
         <div class="modal-header">
@@ -99,14 +99,14 @@
         <div class="modal-footer">
         </div>
       </div>
-      
+
     </div>
   </div>
-  
+
 </div>
 
 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="login" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -146,13 +146,25 @@
 </form>
         </div>
         <div class="modal-footer">
-   
+
         </div>
       </div>
 
     </div>
   </div>
 
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="mapdata" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
         <script src="modal.js"></script>

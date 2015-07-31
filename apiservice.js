@@ -88,7 +88,7 @@ function createMarker(place) {
                     opentimes = '<h6 style="color:red">Closed now</h6>';
                 }
             }
-            infowindow.setContent('<div><h4>' + place.name + '</h4><h6>Rating: ' + rating + '</h6><h6>Distance: ' + +(google.maps.geometry.spherical.computeDistanceBetween(pos, pinpos)*0.000621371192).toFixed(2) + ' miles</h6>' + opentimes + '<button type="button" id="infobutton" data-info=\'' + place.place_id + '\' class="btn btn-default btn-block" data-toggle="modal" data-target=".info-modal">More info</button></div>');
+            infowindow.setContent('<div><h4>' + place.name + '</h4><h6>Rating: ' + rating + '</h6><h6>Distance: ' + +(google.maps.geometry.spherical.computeDistanceBetween(pos, pinpos)*0.000621371192).toFixed(2) + ' miles</h6>' + opentimes + '<button type="button" id="infobutton" data-info=\'' + place.place_id + '\' class="btn btn-default btn-block" data-toggle="modal" data-target="#mapdata">More info</button></div>');
             var request = {
                 origin:pos,
                 destination:pinpos,
