@@ -36,18 +36,19 @@ $(document).on('click', '#infobutton', function() {
                 dataType: "text",
                 async: false,
                 success: function(weatherdata){
+                    var dateCurrent = new Date();
                     var days =
                     [
                         'Today',
                         'Tomorrow',
-                        moment(Date()).day(7).format("DD/MM/YYYY"),
-                        moment(Date()).day(8).format("DD/MM/YYYY"),
-                        moment(Date()).day(9).format("DD/MM/YYYY"),
-                        moment(Date()).day(10).format("DD/MM/YYYY"),
-                        moment(Date()).day(11).format("DD/MM/YYYY"),
-                        moment(Date()).day(12).format("DD/MM/YYYY"),
-                        moment(Date()).day(13).format("DD/MM/YYYY"),
-                        moment(Date()).day(14).format("DD/MM/YYYY")
+                        moment().add(2, 'days').format("DD/MM/YYYY"),
+                        moment().add(3, 'days').format("DD/MM/YYYY"),
+                        moment().add(4, 'days').format("DD/MM/YYYY"),
+                        moment().add(5, 'days').format("DD/MM/YYYY"),
+                        moment().add(6, 'days').format("DD/MM/YYYY"),
+                        moment().add(7, 'days').format("DD/MM/YYYY"),
+                        moment().add(8, 'days').format("DD/MM/YYYY"),
+                        moment().add(9, 'days').format("DD/MM/YYYY")
                     ];
                     weatherdata = jQuery.parseJSON(weatherdata);
                     $.each(weatherdata.list, function(index,value) {
