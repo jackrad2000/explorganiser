@@ -5,6 +5,8 @@ $(document).on('click', '#infobutton', function() {
 
     $('#mapdata .modal-body').html('<h3 class="text-center">Loading. Please wait.</h3>');
 
+    var photo = $(this).data('photo');
+
     $.ajax({
         type: 'GET',
         url:'proxy.php?id=' + $(this).data('info'),
@@ -13,7 +15,11 @@ $(document).on('click', '#infobutton', function() {
             data = jQuery.parseJSON( data );
             data = data.result;
             var text = '<button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-            text = text + '<h4 class="text-center">Image</h4>';
+            if (photo == '') {
+                text = text + '<h5 class="text-center">No image available</h5>';
+            } else {
+                text = text + '<p class="text-center"><img style="max-width: 100%; margin: 0 auto" src="' + photo + '"></p>'
+            }
             text = text + '<hr><h4 class="text-center">Description</h4>';
             if (data.opening_hours == undefined) {
                 text = text + '<hr><h5 class="text-center">Can not retrieve opening hours. Please check the location\'s website.</h5>';
@@ -45,7 +51,6 @@ $(document).on('click', '#infobutton', function() {
                     ];
                     weatherdata = jQuery.parseJSON(weatherdata);
                     $.each(weatherdata.list, function(index,value) {
-                        console.log(value);
                         mintemp = parseInt(value.temp.min - 273.15);
                         maxtemp = parseInt(value.temp.max - 273.15);
                         weather = value.weather[0].description;
@@ -91,12 +96,8 @@ $(document).on('click', '#infobutton', function() {
                 text = text + '<h5 class="text-center">There are no reviews for this location.</h5>'
             }
             $('#mapdata .modal-body').html(text);
-            console.log(data);
         }, error: function(jqXHR, textStatus, errorThrown) {
             $('.modal-body').html('<h3 class="text-center">Unable to retrieve data. Please try again later</h3>');
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
         }
     });
     // $('.modal-body').html(text);

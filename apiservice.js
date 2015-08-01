@@ -17,7 +17,14 @@ function initialize() {
             var marker = new google.maps.Marker({
                 map: map,
                 position: pos,
-                icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                icon: new google.maps.MarkerImage
+                (
+                    'point.png',
+                    null,
+                    null,
+                    null,
+                    new google.maps.Size(37.5, 40)
+                )
             });
 
             google.maps.event.addListener(marker, 'click', function()
@@ -74,6 +81,12 @@ function createMarker(place) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var rating = place.rating;
             var opentimes = place.opening_hours;
+            var photo = place.photos;
+            if (photo == undefined) {
+                photo = '';
+            } else {
+                photo = place.photos[0].getUrl({maxWidth: 1000, maxHeight: 1000});
+            }
             if (rating == undefined) {
                 rating = 'No ratings available';
             } else {
@@ -88,7 +101,7 @@ function createMarker(place) {
                     opentimes = '<h6 style="color:red">Closed now</h6>';
                 }
             }
-            infowindow.setContent('<div><h4>' + place.name + '</h4><h6>Rating: ' + rating + '</h6><h6>Distance: ' + +(google.maps.geometry.spherical.computeDistanceBetween(pos, pinpos)*0.000621371192).toFixed(2) + ' miles</h6>' + opentimes + '<button type="button" id="infobutton" data-info=\'' + place.place_id + '\' class="btn btn-default btn-block" data-toggle="modal" data-target="#mapdata">More info</button></div>');
+            infowindow.setContent('<div><h4>' + place.name + '</h4><h6>Rating: ' + rating + '</h6><h6>Distance: ' + +(google.maps.geometry.spherical.computeDistanceBetween(pos, pinpos)*0.000621371192).toFixed(2) + ' miles</h6>' + opentimes + '<button type="button" id="infobutton" data-info=\'' + place.place_id + '\' data-photo=\'' + photo + '\' class="btn btn-default btn-block" data-toggle="modal" data-target="#mapdata">More info</button></div>');
             var request = {
                 origin:pos,
                 destination:pinpos,

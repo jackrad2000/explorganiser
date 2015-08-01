@@ -1,0 +1,27 @@
+#bs-example-navbar-collapse-1 {
+	background-color: purple;
+}
+.navbar-brand {
+	color: white;
+}
+.navbar-text{
+	color: white;
+}
+li{
+	color: white;
+}
+a {
+	color: white;
+}
+.modal-header{
+	background-color: purple;
+}
+.modal-title{
+	color: white;
+}
+h4{
+	color: white;
+}
+label {
+	color: white;
+}
