@@ -3,7 +3,9 @@ $('#map-canvas').css('margin-top', $('.navbar').height() + 'px');
 
 $(document).on('click', '#infobutton', function() {
 
-    $('.modal-body').html('<h3 class="text-center">Loading. Please wait.</h3>');
+    $('#mapdata .modal-body').html('<h3 class="text-center">Loading. Please wait.</h3>');
+
+    var photo = $(this).data('photo');
 
     $.ajax({
         type: 'GET',
@@ -12,9 +14,12 @@ $(document).on('click', '#infobutton', function() {
         success: function(data){
             data = jQuery.parseJSON( data );
             data = data.result;
-            $('.modal-header').html('<button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h3 class="modal-title">' + data.name + '</h3>');
-            var text = '';
-            text = text + '<h4 class="text-center">Image</h4>';
+            var text = '<button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+            if (photo == '') {
+                text = text + '<h5 class="text-center">No image available</h5>';
+            } else {
+                text = text + '<p class="text-center"><img style="max-width: 100%; margin: 0 auto" src="' + photo + '"></p>'
+            }
             text = text + '<hr><h4 class="text-center">Description</h4>';
             if (data.opening_hours == undefined) {
                 text = text + '<hr><h5 class="text-center">Can not retrieve opening hours. Please check the location\'s website.</h5>';
@@ -29,11 +34,27 @@ $(document).on('click', '#infobutton', function() {
                 type: 'GET',
                 url:'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + data.geometry.location.lat + '&lon=' + data.geometry.location.lon + '&cnt=10',
                 dataType: "text",
+                async: false,
                 success: function(weatherdata){
+                    var days =
+                    [
+                        'Today',
+                        'Tomorrow',
+                        moment(Date()).day(7).format("DD/MM/YYYY"),
+                        moment(Date()).day(8).format("DD/MM/YYYY"),
+                        moment(Date()).day(9).format("DD/MM/YYYY"),
+                        moment(Date()).day(10).format("DD/MM/YYYY"),
+                        moment(Date()).day(11).format("DD/MM/YYYY"),
+                        moment(Date()).day(12).format("DD/MM/YYYY"),
+                        moment(Date()).day(13).format("DD/MM/YYYY"),
+                        moment(Date()).day(14).format("DD/MM/YYYY")
+                    ];
                     weatherdata = jQuery.parseJSON(weatherdata);
                     $.each(weatherdata.list, function(index,value) {
-                        console.log(value);
-                        text = text + Date(value.dt).toString();
+                        mintemp = parseInt(value.temp.min - 273.15);
+                        maxtemp = parseInt(value.temp.max - 273.15);
+                        weather = value.weather[0].description;
+                        text = text + '<h5 class="text-center">' + days[index] + ': ' + weather.charAt(0).toUpperCase() + weather.slice(1) + ' Min: ' + mintemp + "&deg;C Max: " + maxtemp + '&deg;C</h5>';
                     })
                 }
             });
@@ -74,13 +95,9 @@ $(document).on('click', '#infobutton', function() {
             } else {
                 text = text + '<h5 class="text-center">There are no reviews for this location.</h5>'
             }
-            $('.modal-body').html(text);
-            console.log(data);
+            $('#mapdata .modal-body').html(text);
         }, error: function(jqXHR, textStatus, errorThrown) {
             $('.modal-body').html('<h3 class="text-center">Unable to retrieve data. Please try again later</h3>');
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
         }
     });
     // $('.modal-body').html(text);
