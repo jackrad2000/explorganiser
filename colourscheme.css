@@ -1,27 +1,47 @@
-#bs-example-navbar-collapse-1 {
-	background-color: purple;
-}
+
 .navbar-brand {
+	color: orange;
+}
+.nav-name{
+	color: orange;
+}
+.icon-bar{
+	background-color: orange;
 	color: white;
 }
-.navbar-text{
-	color: white;
+.toolbar{
+	color: orange;
 }
-li{
-	color: white;
+.login{
+	color: orange;
 }
-a {
-	color: white;
+.signup {
+	color: orange;
+}
+.control-label {
+	color: orange;
+}
+.navbar{
+	color: orange;
+}
+.btn{
+	color: orange;
+}
+.btn-default{
+	color: orange;
 }
 .modal-header{
-	background-color: purple;
+	background-color: orange;
 }
 .modal-title{
 	color: white;
 }
-h4{
-	color: white;
+#bs-example-navbar-collapse-1{
+	background-color: orange;
 }
-label {
-	color: white;
+.navbar-toggle{
+	background-color: white;
+}
+.nav {
+ background-color: white;
 }
