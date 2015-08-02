@@ -42,12 +42,12 @@
 
 
                         <!-- Trigger the modal with a button -->
-                        <p class="navbar-text" style="color:orange;">Jack</p>
-                        <li><a href="index.html" style="color:orange;"><div >Organiser</div></a></li>
-                        <li><a href="index.html " style="color:orange;" ><div >Categories</div></a></li>
-                        <li><a href="index.html" style="color:orange;"><div >Distance</div></a></li>
-                        <li><a href="index.html" style="color:orange;"><div >Settings</div></a></li>
-  						          <li><a href="index.html" style="color:orange;"><div >Log out</div></a></li>
+                        <li><a class="navbar-text" style="color:orange;"><div>Jack</div></a></li>
+                        <li><a href="#" style="color:orange;"><div >Organiser</div></a></li>
+                        <li><a><div data-toggle="modal" data-target="#categories" style="color:orange;">Categories</div></a></li>
+                        <li><a><div data-toggle="modal" data-target="#distance" style="color:orange;">Distance</div></a></li>
+                        <li><a href="#" style="color:orange;"><div >Settings</div></a></li>
+  						<li><a href="index.html" style="color:orange;"><div >Log out</div></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -160,6 +160,75 @@
   </div>
 
 </div>
+
+
+
+
+<!-- Modal -->
+  <div class="modal fade" id="categories" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Categories</h4>
+        </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <div><label><input type="checkbox"> Galleries </label></div>
+       <div><label><input type="checkbox"> Museums </label></div>
+        <div><label><input type="checkbox"> Restaurants</label></div>
+        <div><label><input type="checkbox"> Shopping Centres</label></div>
+        <div><label><input type="checkbox"> Amuesment Parks</label></div>
+        <div><label><input type="checkbox"> Stadiums</label></div>
+        <div><label><input type="checkbox"> Historical Sites </label></div>
+        <div><label><input type="checkbox"> Theatres</label></div>
+
+      </div>
+    </div>
+  </div>
+</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+  <div class="modal fade" id="distance" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Distance</h4>
+        </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <div><label><input type="checkbox"> 500 Metres</label></div>
+        <div><label><input type="checkbox"> 1000 Metres</label></div>
+        <div><label><input type="checkbox"> 2500 Metres</label></div>
+        <div><label><input type="checkbox"> 5000 Metres</label></div>
+      </div>
+    </div>
+  </div>
+</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
         <script src="modal.js"></script>
     </body>
